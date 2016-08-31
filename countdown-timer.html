@@ -18,9 +18,10 @@ If you want to have timer till 8th december, 2016 then just w rite
       }
     </style>
 
-    <h1>Date: {{date}}</h1><br>
-    <h1>Month: {{month}}</h1><br>
-    <h1>Year: {{year}}</h1>
+    <h1>Days: {{days}}</h1>
+    <h1>Hours: {{hours}}</h1>
+    <h1>Minutes: {{minutes}}</h1>
+    <h1>Seconds: {{seconds}}</h1>
 
   </template>
 
@@ -31,23 +32,45 @@ If you want to have timer till 8th december, 2016 then just w rite
 
       properties: {
 
-        /** Date of the day when countdown will stop */
-
+        /** Enter date of that day when you want to stop countdown */
         date: {
           type: Number
         },
 
-        /** Month of the day when countdown will stop */
-
+        /** Enter month of that day when you want to stop countdown */
         month: {
           type: Number
         },
 
-        /** Year of the day when countdown will stop */
-
+        /** Enter Year of that day when you want to stop countdown */
         year: {
           type: Number
         }
+
+      },
+
+      ready: function () {
+        this.endDateEpoch = new Date(this.year, this.month - 1, this.date).valueOf() / 1000;
+      },
+
+      attached: function () {
+        this.tick();
+        this.timer = setInterval(this.tick.bind(this), 1000);
+      },
+
+      detached: function () {
+        clearInterval(this.timer);
+      },
+
+      /** Updates the view according to the endTime */
+      tick: function () {
+        var difference = this.endDateEpoch - Math.floor(Date.now() / 1000);
+        this.days = Math.floor(difference / (24 * 60 * 60));
+        difference = difference - (this.days * (24 * 60 * 60));
+        this.hours = Math.floor(difference / (60 * 60));
+        difference = difference - (this.hours * (60 * 60));
+        this.minutes = Math.floor(difference / 60);
+        this.seconds = difference % 60;
       }
 
     });
