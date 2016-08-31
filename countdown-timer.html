@@ -4,6 +4,9 @@
 `countdown-timer`
 A timer element using Polymer
 
+If you want to have timer till 8th december, 2016 then just w rite
+`<countdown-timer date="8" month="12" year="2016"></countdown-timer>`
+
 @demo demo/index.html 
 -->
 
@@ -15,14 +18,37 @@ A timer element using Polymer
       }
     </style>
 
-    <h2>Hello World</h2>
+    <h1>Date: {{date}}</h1><br>
+    <h1>Month: {{month}}</h1><br>
+    <h1>Year: {{year}}</h1>
 
   </template>
 
   <script>
     Polymer({
 
-      is: 'countdown-timer'
+      is: 'countdown-timer',
+
+      properties: {
+
+        /** Date of the day when countdown will stop */
+
+        date: {
+          type: Number
+        },
+
+        /** Month of the day when countdown will stop */
+
+        month: {
+          type: Number
+        },
+
+        /** Year of the day when countdown will stop */
+
+        year: {
+          type: Number
+        }
+      }
 
     });
   </script>
