@@ -18,16 +18,17 @@ The following custom properties and mixins are available for styling:
 
 Custom Properties| Description | Default
 -----------------|-------------|------------
-`--countdown-timer-number`| Mixin applied to all the numbers(days,hours,minutes,seconds)|`border-radius: 50%,flex-2`
-`--countdown-timer-text`| Mixin applied to all the text which are following numbers| `flex`
+`--countdown-timer-number`| Mixin applied to all the numbers(days,hours,minutes,seconds)|`--layout-flex-2`
+`--countdown-timer-text`| Mixin applied to all the text which are following numbers| `--layout-flex`
+`--countdown-timer-border-radius`| Mixin applied to change border radius of numbers| `50%`
 `--countdown-timer-days`| Mixin applied to day's number| `{}`
 `--countdown-timer-hours`| Mixin applied to hour's number| `{}`
 `--countdown-timer-minutes`| Mixin applied to minute's number| `{}`
 `--countdown-timer-seconds`| Mixin applied to second's number| `{}`
-`--countdown-timer-daysText`| Mixin applied to day's Tex| `{}`
-`--countdown-timer-hoursText`| Mixin applied to hour's Text| `{}`
-`--countdown-timer-minutesText`| Mixin applied to minute's Text| `{}`
-`--countdown-timer-secondsText`| Mixin applied to second's Text| `{}`
+`--countdown-timer-days-text`| Mixin applied to day's Text| `{}`
+`--countdown-timer-hours-text`| Mixin applied to hour's Text| `{}`
+`--countdown-timer-minutes-text`| Mixin applied to minute's Text| `{}`
+`--countdown-timer-seconds-text`| Mixin applied to second's Text| `{}`
 
 @demo demo/index.html 
 -->
@@ -72,32 +73,33 @@ Custom Properties| Description | Default
       }
 
       #daysText {
-        @apply(--countdown-timer-daysText);
+        @apply(--countdown-timer-days-text);
       }
 
       #hoursText {
-        @apply(--countdown-timer-hoursText);
+        @apply(--countdown-timer-hours-text);
       }
 
       #minutesText {
-        @apply(--countdown-timer-minutesText);
+        @apply(--countdown-timer-minutes-text);
       }
 
       #secondsText {
-        @apply(--countdown-timer-secondsText);
+        @apply(--countdown-timer-seconds-text);
       }
 
       .number {
         @apply(--layout-flex-2);
         font-size: 45px;
         border: 1px solid var(--countdown-timer-color, var(--paper-indigo-500));
-        border-radius: 50%;
+        border-radius: var(--countdown-timer-border-radius, 50%);
         width: 1.2em;
         text-align: center;
         padding: 10px;
         margin: 0.1em;
 
         @apply(--countdown-timer-number);
+        @apply(--countdown-timer-border-radius);
       }
 
       .text {

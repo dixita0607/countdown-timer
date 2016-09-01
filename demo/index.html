@@ -13,7 +13,7 @@
 
   <style is="custom-style" include="demo-pages-shared-styles">
     demo-snippet {
-      width: 600px;
+      width: 700px;
     }
   </style>
 </head>
@@ -26,6 +26,93 @@
       <countdown-timer date="8" month="12" year="2016"></countdown-timer>
     </template>
   </demo-snippet>
+
+  <h3>Demo(Circle) using Custom Properties</h3>
+  <demo-snippet>
+    <template>
+
+      <style is="custom-style">
+        #countdownDemo1 {
+          color: white;
+
+          --countdown-timer-number: {
+            margin: 0.2em;
+            border-color: transparent;
+          };
+
+          --countdown-timer-text: {
+            color: var(--paper-indigo-500);
+            margin-right: 0.7em;
+            font-size: 17px;
+          };
+
+          --countdown-timer-days: {
+            background-color: var(--paper-pink-500);
+          };
+
+          --countdown-timer-hours: {
+            background-color: var(--paper-cyan-500);
+          };
+
+          --countdown-timer-minutes: {
+            background-color: var(--paper-deep-purple-500);
+          };
+
+          --countdown-timer-seconds: {
+            background-color: var(--paper-red-500);
+          }
+        }
+
+      </style>
+
+      <countdown-timer date="8" month="12" year="2016" id="countdownDemo1"></countdown-timer>
+    </template>
+  </demo-snippet>
+
+  <h3>Demo(Square) using Custom Properties</h3>
+  <demo-snippet>
+    <template>
+
+      <style is="custom-style">
+        #countdownDemo2 {
+          color: white;
+
+          --countdown-timer-number: {
+            margin: 0.2em;
+            border-color: transparent;
+          };
+
+          --countdown-timer-text: {
+            color: var(--paper-indigo-500);
+            margin-right: 0.7em;
+            font-size: 17px;
+          };
+
+          --countdown-timer-border-radius: 15%;
+
+          --countdown-timer-days: {
+            background-color: var(--paper-pink-500);
+          };
+
+          --countdown-timer-hours: {
+            background-color: var(--paper-cyan-500);
+          };
+
+          --countdown-timer-minutes: {
+            background-color: var(--paper-deep-purple-500);
+          };
+
+          --countdown-timer-seconds: {
+            background-color: var(--paper-red-500);
+          }
+        }
+
+      </style>
+
+      <countdown-timer date="8" month="12" year="2016" id="countdownDemo2"></countdown-timer>
+    </template>
+  </demo-snippet>
+
 </div>
 
 </body>
