@@ -18,14 +18,16 @@ The following custom properties and mixins are available for styling:
 
 Custom Properties| Description | Default
 -----------------|-------------|------------
-`--countdown-timer-days`| Mixin given to day's number| {}
-`--countdown-timer-hours`| Mixin given to hour's number| {}
-`--countdown-timer-minutes`| Mixin given to minute's number| {}
-`--countdown-timer-seconds`| Mixin given to second's number| {}
-`--countdown-timer-daysText`| Mixin given to day's Tex| {}
-`--countdown-timer-hoursText`| Mixin given to hour's Text| {}
-`--countdown-timer-minutesText`| Mixin given to minute's Text| {}
-`--countdown-timer-secondsText`| Mixin given to second's Text| {}
+`--countdown-timer-number`| Mixin applied to all the numbers(days,hours,minutes,seconds)|`border-radius: 50%,flex-2`
+`--countdown-timer-text`| Mixin applied to all the text which are following numbers| `flex`
+`--countdown-timer-days`| Mixin applied to day's number| `{}`
+`--countdown-timer-hours`| Mixin applied to hour's number| `{}`
+`--countdown-timer-minutes`| Mixin applied to minute's number| `{}`
+`--countdown-timer-seconds`| Mixin applied to second's number| `{}`
+`--countdown-timer-daysText`| Mixin applied to day's Tex| `{}`
+`--countdown-timer-hoursText`| Mixin applied to hour's Text| `{}`
+`--countdown-timer-minutesText`| Mixin applied to minute's Text| `{}`
+`--countdown-timer-secondsText`| Mixin applied to second's Text| `{}`
 
 @demo demo/index.html 
 -->
@@ -35,6 +37,20 @@ Custom Properties| Description | Default
     <style>
       :host {
         display: block;
+        font-family: Roboto, sans-serif;
+        color: var(--countdown-timer-color, var(--paper-indigo-500));
+      }
+
+      /* Horizontal layout to container */
+
+      .timer-container {
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
+      }
+
+      .timer-container > * {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
       }
 
       /* Mixin given to element user */
@@ -71,17 +87,53 @@ Custom Properties| Description | Default
         @apply(--countdown-timer-secondsText);
       }
 
+      .number {
+        @apply(--layout-flex-2);
+        font-size: 45px;
+        border: 1px solid var(--countdown-timer-color, var(--paper-indigo-500));
+        border-radius: 50%;
+        width: 1.2em;
+        text-align: center;
+        padding: 10px;
+        margin: 0.1em;
+
+        @apply(--countdown-timer-number);
+      }
+
+      .text {
+        @apply(--layout-flex);
+        font-size: 15px;
+        margin-right: 0.5em;
+
+        @apply(--countdown-timer-text);
+      }
+
+      /* Todo: Add media queries. */
+
     </style>
 
-    <div>
-      <div id="days">{{days}}</div>
-      <div id="daysText">Days</div>
-      <div id="hours">{{hours}}</div>
-      <div id="hoursText">Hours</div>
-      <div id="minutes">{{minutes}}</div>
-      <div id="minutesText">Minutes</div>
-      <div id="seconds">{{seconds}}</div>
-      <div id="secondsText">Seconds</div>
+    <div class="timer-container">
+
+      <div>
+        <div id="days" class="number">{{days}}</div>
+        <div id="daysText" class="text">Days</div>
+      </div>
+
+      <div>
+        <div id="hours" class="number">{{hours}}</div>
+        <div id="hoursText" class="text">Hours</div>
+      </div>
+
+      <div>
+        <div id="minutes" class="number">{{minutes}}</div>
+        <div id="minutesText" class="text">Minutes</div>
+      </div>
+
+      <div>
+        <div id="seconds" class="number">{{seconds}}</div>
+        <div id="secondsText" class="text">Seconds</div>
+      </div>
+
     </div>
 
   </template>
