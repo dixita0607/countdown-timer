@@ -2,10 +2,30 @@
 
 <!--
 `countdown-timer`
-A timer element using Polymer
+A timer clock, which shows remaining days, hours, minutes and seconds
+from today to the date which you have entered
 
-If you want to have timer till 8th december, 2016 then just w rite
-`<countdown-timer date="8" month="12" year="2016"></countdown-timer>`
+### Example:
+
+If you want to have timer till 8th december, 2016 then just write
+```html
+<countdown-timer date="8" month="12" year="2016"></countdown-timer>
+```
+
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom Properties| Description | Default
+-----------------|-------------|------------
+`--countdown-timer-days`| Mixin given to day's number| {}
+`--countdown-timer-hours`| Mixin given to hour's number| {}
+`--countdown-timer-minutes`| Mixin given to minute's number| {}
+`--countdown-timer-seconds`| Mixin given to second's number| {}
+`--countdown-timer-daysText`| Mixin given to day's Tex| {}
+`--countdown-timer-hoursText`| Mixin given to hour's Text| {}
+`--countdown-timer-minutesText`| Mixin given to minute's Text| {}
+`--countdown-timer-secondsText`| Mixin given to second's Text| {}
 
 @demo demo/index.html 
 -->
@@ -16,12 +36,53 @@ If you want to have timer till 8th december, 2016 then just w rite
       :host {
         display: block;
       }
+
+      /* Mixin given to element user */
+
+      #days {
+        @apply(--countdown-timer-days);
+      }
+
+      #hours {
+        @apply(--countdown-timer-hours);
+      }
+
+      #minutes {
+        @apply(--countdown-timer-minutes);
+      }
+
+      #seconds {
+        @apply(--countdown-timer-seconds);
+      }
+
+      #daysText {
+        @apply(--countdown-timer-daysText);
+      }
+
+      #hoursText {
+        @apply(--countdown-timer-hoursText);
+      }
+
+      #minutesText {
+        @apply(--countdown-timer-minutesText);
+      }
+
+      #secondsText {
+        @apply(--countdown-timer-secondsText);
+      }
+
     </style>
 
-    <h1>Days: {{days}}</h1>
-    <h1>Hours: {{hours}}</h1>
-    <h1>Minutes: {{minutes}}</h1>
-    <h1>Seconds: {{seconds}}</h1>
+    <div>
+      <div id="days">{{days}}</div>
+      <div id="daysText">Days</div>
+      <div id="hours">{{hours}}</div>
+      <div id="hoursText">Hours</div>
+      <div id="minutes">{{minutes}}</div>
+      <div id="minutesText">Minutes</div>
+      <div id="seconds">{{seconds}}</div>
+      <div id="secondsText">Seconds</div>
+    </div>
 
   </template>
 
