@@ -5,6 +5,12 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0"
   },
+  "keywords": [
+    "countdown",
+    "timer",
+    "polymer",
+    "web-components"
+  ],
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
